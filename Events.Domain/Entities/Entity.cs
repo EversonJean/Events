@@ -12,17 +12,17 @@ namespace Events.Domain.Entities
 
             if (ReferenceEquals(this, obj)) return true;
 
-            if (ReferenceEquals(null, obj)) return false;
+            if (obj is null || compareTo is null) return false;
 
             return Id.Equals(compareTo.Id);
         }
 
         public static bool operator ==(Entity first, Entity second)
         {
-            if (ReferenceEquals(first, null) && ReferenceEquals(second, null))
+            if (first is null && second is null)
                 return true;
 
-            if (ReferenceEquals(first, null) || ReferenceEquals(second, null))
+            if (first is null || second is null)
                 return false;
 
             return first.Equals(second);

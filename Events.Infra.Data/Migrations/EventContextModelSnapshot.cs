@@ -15,7 +15,7 @@ namespace Events.Infra.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
+                .HasAnnotation("ProductVersion", "2.1.8-servicing-32085")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -40,8 +40,6 @@ namespace Events.Infra.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(20)");
 
-                    b.Property<Guid>("EventId");
-
                     b.Property<string>("Number")
                         .IsRequired()
                         .HasColumnType("varchar(30)");
@@ -55,9 +53,6 @@ namespace Events.Infra.Data.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EventId")
-                        .IsUnique();
 
                     b.ToTable("Adresses");
                 });
@@ -115,6 +110,9 @@ namespace Events.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AddressId")
+                        .IsUnique();
+
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("OrganizerId");
@@ -144,16 +142,13 @@ namespace Events.Infra.Data.Migrations
                     b.ToTable("Organizers");
                 });
 
-            modelBuilder.Entity("Events.Domain.Entities.Address", b =>
-                {
-                    b.HasOne("Events.Domain.Entities.Event", "Event")
-                        .WithOne("Address")
-                        .HasForeignKey("Events.Domain.Entities.Address", "EventId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Events.Domain.Entities.Event", b =>
                 {
+                    b.HasOne("Events.Domain.Entities.Address", "Address")
+                        .WithOne("Event")
+                        .HasForeignKey("Events.Domain.Entities.Event", "AddressId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Events.Domain.Entities.Category", "Category")
                         .WithMany("Events")
                         .HasForeignKey("CategoryId")

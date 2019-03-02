@@ -3,10 +3,28 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Events.Infra.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class last : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Adresses",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Street = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Number = table.Column<string>(type: "varchar(30)", nullable: false),
+                    Complement = table.Column<string>(type: "varchar(50)", nullable: false),
+                    District = table.Column<string>(type: "varchar(20)", nullable: false),
+                    CEP = table.Column<string>(type: "varchar(8)", nullable: false),
+                    City = table.Column<string>(type: "varchar(20)", nullable: false),
+                    State = table.Column<string>(type: "varchar(20)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Adresses", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
@@ -55,6 +73,12 @@ namespace Events.Infra.Data.Migrations
                 {
                     table.PrimaryKey("PK_Events", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Events_Adresses_AddressId",
+                        column: x => x.AddressId,
+                        principalTable: "Adresses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Events_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
@@ -68,35 +92,10 @@ namespace Events.Infra.Data.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Adresses",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Street = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Number = table.Column<string>(type: "varchar(30)", nullable: false),
-                    Complement = table.Column<string>(type: "varchar(50)", nullable: false),
-                    District = table.Column<string>(type: "varchar(20)", nullable: false),
-                    CEP = table.Column<string>(type: "varchar(8)", nullable: false),
-                    City = table.Column<string>(type: "varchar(20)", nullable: false),
-                    State = table.Column<string>(type: "varchar(20)", nullable: false),
-                    EventId = table.Column<Guid>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Adresses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Adresses_Events_EventId",
-                        column: x => x.EventId,
-                        principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
-                name: "IX_Adresses_EventId",
-                table: "Adresses",
-                column: "EventId",
+                name: "IX_Events_AddressId",
+                table: "Events",
+                column: "AddressId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -113,10 +112,10 @@ namespace Events.Infra.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Adresses");
+                name: "Events");
 
             migrationBuilder.DropTable(
-                name: "Events");
+                name: "Adresses");
 
             migrationBuilder.DropTable(
                 name: "Categories");

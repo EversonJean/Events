@@ -27,6 +27,8 @@ namespace Events.Infra.Data.Map
             builder.Ignore(x => x.Tags);
 
             builder.HasOne(x => x.Category).WithMany(x => x.Events).IsRequired();
+
+            builder.HasOne(x => x.Address).WithOne(x => x.Event).HasForeignKey<Event>(x => x.AddressId).IsRequired();
         }
     }
 }

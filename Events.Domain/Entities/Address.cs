@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Events.Domain.Entities
+﻿namespace Events.Domain.Entities
 {
     public class Address : Entity
     {
@@ -17,8 +15,6 @@ namespace Events.Domain.Entities
         public string City { get; set; }
 
         public string State { get; set; }
-
-        public Guid EventId { get; set; }
 
         public virtual Event Event { get; set; }
     }

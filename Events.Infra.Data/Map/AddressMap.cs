@@ -25,8 +25,6 @@ namespace Events.Infra.Data.Map
             builder.Property(x => x.Number).HasColumnType("varchar(30)").IsRequired();
 
             builder.Property(x => x.CEP).HasColumnType("varchar(8)").IsRequired();
-
-            builder.HasOne(x => x.Event).WithOne(x => x.Address).HasForeignKey<Address>(x => x.EventId).IsRequired();
         }
     }
 }
