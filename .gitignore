@@ -8,3 +8,5 @@
 /Events.Infra.Data/obj
 /.vs/config
 /.vs
+/Events.Infra.CrossCutting.IoC/bin/Debug/netcoreapp2.1
+/Events.Infra.CrossCutting.IoC/obj
