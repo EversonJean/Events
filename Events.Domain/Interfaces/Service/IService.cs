@@ -5,22 +5,20 @@ using System.Linq.Expressions;
 
 namespace Events.Domain.Interfaces
 {
-    public interface IRepository<T> : IDisposable where T : Entity
+    public interface IService<T> : IDisposable where T : Entity
     {
         void Add(T obj);
 
         void Update(T obj);
 
-        void Remove(Guid Id);
+        void Remove(Guid id);
 
-        T GetById(Guid Id);
+        T GetById(Guid id);
 
         IEnumerable<T> GetAll();
 
         T GetElement(Expression<Func<T, bool>> where);
 
         IEnumerable<T> Find(Expression<Func<T, bool>> where);
-
-        int SaveChanges();
     }
 }
