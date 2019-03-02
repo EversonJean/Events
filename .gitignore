@@ -1,0 +1,10 @@
+﻿/.vs/Events/DesignTimeBuild
+/.vs/Events/v15
+/Events.Application/bin/Debug/netcoreapp2.1
+/Events.Application/obj
+/Events.Domain/bin/Debug/netcoreapp2.1
+/Events.Domain/obj
+/Events.Infra.Data/bin/Debug/netcoreapp2.1
+/Events.Infra.Data/obj
+/.vs/config
+/.vs
