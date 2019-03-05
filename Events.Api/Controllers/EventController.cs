@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Events.Api.Controllers
 {
     [ApiController]
-    [Route("api/event")]
+    [Route("api/events")]
     public class EventController : ControllerBase
     {
         private readonly IEventAppService _service;
@@ -15,7 +15,7 @@ namespace Events.Api.Controllers
         }
 
         [HttpGet]
-        [Route("all")]
+        [Route("getall")]
         public IActionResult GetAll()
         {
             //TODO: Validation result

@@ -10,6 +10,8 @@ namespace Events.Api
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,6 +23,11 @@ namespace Events.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(x => x.AllowAnyOrigin());
+            });
 
             AutoMapperConfiguration.Configure();
 
@@ -35,6 +42,7 @@ namespace Events.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors();
             app.UseMvc();
         }
 

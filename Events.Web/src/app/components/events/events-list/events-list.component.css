@@ -1,0 +1,28 @@
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
+div {
+  padding: 1.5rem;
+}
+
+a > i {
+  padding-left: 1rem;
+}
+
+table > tbody > tr > td:last-child {
+  width: 10rem;
+  white-space: nowrap;
+}
+
+td > a {
+  color: #343a40;
+}
+
+td > a:first-child:hover{
+  color: rgb(41, 140, 221);
+}
+
+td > a:last-child:hover{
+  color: rgb(216, 46, 46);
+}
