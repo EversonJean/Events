@@ -1,0 +1,26 @@
+nav {
+  height: 100%;
+  position: absolute;
+  width: 3rem;
+  padding: 10px;
+}
+
+nav>a>i {
+  margin-bottom: 20px;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  color: #c0c3c5;
+  font-size: 1.5rem;
+  padding-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+li:hover{
+  color: rgb(41, 140, 221);
+}

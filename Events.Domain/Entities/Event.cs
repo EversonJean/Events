@@ -23,7 +23,6 @@ namespace Events.Domain.Entities
 
         public string CompanyName { get; set; }
 
-
         public Guid CategoryId { get; set; }
 
         public Guid AddressId { get; set; }
