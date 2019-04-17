@@ -5,10 +5,6 @@ nav {
   padding: 10px;
 }
 
-nav>a>i {
-  margin-bottom: 20px;
-}
-
 ul{
   list-style: none;
   padding: 0;
@@ -17,7 +13,7 @@ ul{
 li {
   color: #c0c3c5;
   font-size: 1.5rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
   cursor: pointer;
 }
 

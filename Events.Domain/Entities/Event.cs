@@ -7,7 +7,7 @@ namespace Events.Domain.Entities
     {
         public string Name { get; set; }
 
-        public string ShortDescrition { get; set; }
+        public string ShortDescription { get; set; }
 
         public string FullDescription { get; set; }
 

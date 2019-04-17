@@ -15,6 +15,8 @@ namespace Events.Domain.Services
             _repository = repository;
         }
 
+        public abstract bool IsValid(T obj);
+
         public void Add(T obj)
         {
             _repository.Add(obj);
@@ -50,11 +52,15 @@ namespace Events.Domain.Services
             return _repository.GetAll();
         }
 
+        public IEnumerable<TResult> GetElementsByExpression<TResult>(Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> where = null, string includes = null) where TResult : class
+        {
+            return _repository.GetElementsByExpression(selector, where, includes);
+        }
+
         public void Dispose()
         {
             _repository.Dispose();
         }
-
-        public abstract bool IsValid(T obj);
     }
 }

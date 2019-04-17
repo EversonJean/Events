@@ -14,7 +14,7 @@ namespace Events.Infra.Data.Map
 
             builder.Property(x => x.Name).HasColumnType("varchar(100)").IsRequired();
 
-            builder.Property(x => x.ShortDescrition).HasColumnType("varchar(30)").IsRequired();
+            builder.Property(x => x.ShortDescription).HasColumnType("varchar(30)").IsRequired();
 
             builder.Property(x => x.FullDescription).HasColumnType("varchar(100)").IsRequired();
 
@@ -28,7 +28,7 @@ namespace Events.Infra.Data.Map
 
             builder.HasOne(x => x.Category).WithMany(x => x.Events).IsRequired();
 
-            builder.HasOne(x => x.Address).WithOne(x => x.Event).HasForeignKey<Event>(x => x.AddressId).IsRequired();
+            builder.HasOne(x => x.Address).WithOne().HasForeignKey<Event>(x => x.AddressId).IsRequired();
         }
     }
 }

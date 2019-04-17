@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Events.Infra.Data.Migrations
 {
     [DbContext(typeof(EventContext))]
-    [Migration("20190302201947_last")]
-    partial class last
+    [Migration("20190417011034_LastUpdateEntities")]
+    partial class LastUpdateEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -102,7 +102,7 @@ namespace Events.Infra.Data.Migrations
 
                     b.Property<Guid?>("OrganizerId");
 
-                    b.Property<string>("ShortDescrition")
+                    b.Property<string>("ShortDescription")
                         .IsRequired()
                         .HasColumnType("varchar(30)");
 
@@ -147,7 +147,7 @@ namespace Events.Infra.Data.Migrations
             modelBuilder.Entity("Events.Domain.Entities.Event", b =>
                 {
                     b.HasOne("Events.Domain.Entities.Address", "Address")
-                        .WithOne("Event")
+                        .WithOne()
                         .HasForeignKey("Events.Domain.Entities.Event", "AddressId")
                         .OnDelete(DeleteBehavior.Cascade);
 

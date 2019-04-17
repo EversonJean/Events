@@ -1,3 +1,7 @@
-.main{
-  margin-left: 3.5rem;
+.body {
+  margin-left: 3rem;
+}
+
+.content {
+  padding: 1.5rem;
 }

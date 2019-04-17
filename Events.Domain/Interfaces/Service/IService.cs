@@ -20,5 +20,8 @@ namespace Events.Domain.Interfaces
         T GetElement(Expression<Func<T, bool>> where);
 
         IEnumerable<T> Find(Expression<Func<T, bool>> where);
+
+        IEnumerable<TResult> GetElementsByExpression<TResult>(Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> where = null, string includes = null) where TResult : class;
     }
 }

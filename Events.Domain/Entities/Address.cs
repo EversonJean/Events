@@ -15,7 +15,5 @@
         public string City { get; set; }
 
         public string State { get; set; }
-
-        public virtual Event Event { get; set; }
     }
 }

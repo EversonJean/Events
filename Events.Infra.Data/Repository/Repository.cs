@@ -45,6 +45,20 @@ namespace Events.Infra.Data.Repository
             return DbSet.AsNoTracking().Where(where);
         }
 
+        public IEnumerable<TResult> GetElementsByExpression<TResult>(Expression<Func<T, TResult>> selector,
+            Expression<Func<T, bool>> where, string includes) where TResult : class
+        {
+            var query = DbSet.AsQueryable();
+
+            if (where != null)
+                query = query.Where(where);
+
+            if (includes != null)
+                query = query.Include(includes);
+
+            return query.Select(selector);
+        }
+
         public virtual IEnumerable<T> GetAll()
         {
             return DbSet.ToList();
@@ -63,6 +77,7 @@ namespace Events.Infra.Data.Repository
         public void Dispose()
         {
             Db.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

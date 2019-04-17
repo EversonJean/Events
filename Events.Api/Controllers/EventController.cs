@@ -19,7 +19,7 @@ namespace Events.Api.Controllers
         public IActionResult GetAll()
         {
             //TODO: Validation result
-            var result = _service.GetAll();
+            var result = _service.GetEventList();
             return Ok(result);
         }
     }

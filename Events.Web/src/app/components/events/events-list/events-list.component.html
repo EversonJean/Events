@@ -1,29 +1,35 @@
-<div>
-  <table class="table table-bordered">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Company</th>
-        <th scope="col">Description</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let event of Events; let i = index" [attr.data-index]="i">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ event.name }}</td>
-        <td>{{ event.companyName }}</td>
-        <td>{{ event.shortDescrition }}</td>
-        <td>
-          <a href="#">
-            <i title="edit" class="fas fa-pen"></i>
-          </a>
-          <a href="#">
-            <i title="remove" class="fas fa-times-circle"></i>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Company</th>
+      <th scope="col">Description</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="!loading">
+    <tr *ngFor="let event of events; let i = index" [attr.data-index]="i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ event.name }}</td>
+      <td>{{ event.companyName }}</td>
+      <td>{{ event.shortDescription }}</td>
+      <td>
+        <a (click)="onEdit(event.id)">
+          <i title="edit" class="fas fa-pen"></i>
+        </a>
+        <a>
+          <i title="remove" class="fas fa-times-circle"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<modal id="event-edit" title="Edit Event" icon="fas fa-calendar-week">
+  <app-event-edit #eventForm></app-event-edit>
+</modal>
+
+<div id="preloader" *ngIf="loading">
+  <div id="loader"></div>
 </div>

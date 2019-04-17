@@ -100,7 +100,7 @@ namespace Events.Infra.Data.Migrations
 
                     b.Property<Guid?>("OrganizerId");
 
-                    b.Property<string>("ShortDescrition")
+                    b.Property<string>("ShortDescription")
                         .IsRequired()
                         .HasColumnType("varchar(30)");
 
@@ -145,7 +145,7 @@ namespace Events.Infra.Data.Migrations
             modelBuilder.Entity("Events.Domain.Entities.Event", b =>
                 {
                     b.HasOne("Events.Domain.Entities.Address", "Address")
-                        .WithOne("Event")
+                        .WithOne()
                         .HasForeignKey("Events.Domain.Entities.Event", "AddressId")
                         .OnDelete(DeleteBehavior.Cascade);
 

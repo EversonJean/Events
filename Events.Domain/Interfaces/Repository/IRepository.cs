@@ -21,6 +21,8 @@ namespace Events.Domain.Interfaces
 
         IEnumerable<T> Find(Expression<Func<T, bool>> where);
 
+        IEnumerable<TResult> GetElementsByExpression<TResult>(Expression<Func<T, TResult>> selector, Expression<Func<T, bool>> where, string includes) where TResult : class;
+
         int SaveChanges();
     }
 }

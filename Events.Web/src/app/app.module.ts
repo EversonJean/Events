@@ -3,31 +3,35 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventsComponent } from './components/events/events.component';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { MenuComponent } from './components/menu/menu.component';
 import { EventsListComponent } from './components/events/events-list/events-list.component';
+import { EventEditComponent } from './components/events/event-edit/event-edit.component';
 
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventsComponent,
     MenuComponent,
-    EventsListComponent
+    EventsListComponent,
+    EventEditComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
-    NgxDatatableModule,
-    HttpClientModule
+    NgbModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
+  entryComponents: [
+    ModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 

@@ -1,0 +1,16 @@
+  <div class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="{{ icon }} icon"></i>{{ title }}</h5>
+          <span class="close" (click)="close()">&times;</span>
+        </div>
+        <div class="modal-body">
+          <ng-content></ng-content>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info btn-sm">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
